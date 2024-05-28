@@ -1,0 +1,162 @@
+/*te es para que todo el html quede con la misma letra buscado en google font (monserrate)*/
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*este es para que todo el fondo de la pagina quede con margen 0 y un color tenue*/
+
+
+/*encabezado, color y medida*/
+header {
+    background-image: linear-gradient(
+        150deg ,
+        #9500ff,
+        #09f,
+        #00DDFF
+        );
+    color: white;
+    padding: 3rem 2rem;
+}
+
+/*encabezado tamaño letra, centrado y color*/
+header h1 {
+    font-size: 4rem;
+    text-align: center;
+    color: white
+}
+
+/*este es para organizar los botones Inicio, servicio, nosotros*/
+.menu {
+    display: flex;
+    justify-content: center;
+}
+.button {
+    border: 0;
+    background-image: linear-gradient(
+    150deg ,
+    #9500ff,
+    #09f,
+    #00DDFF
+    );
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    font-size: 18px;
+    padding: 4px;
+    cursor: pointer;
+    transition: .3s;
+    margin: 0 10px;
+}
+
+/*   #16023f  */
+button span {
+    background-color:rgb(124, 202, 228);
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: .3s;
+}
+
+button:hover span {
+    background: none;
+} */
+
+button:active {
+    transform: scale(0,9);
+}
+
+footer {
+    background-image: linear-gradient(
+        150deg ,
+        #9500ff,
+        #09f,
+        #00DDFF
+        );
+    color: white;
+    padding: 1rem 1rem;
+    text-align: right;
+} 
+
+  /* nuevo  */
+
+  nav {
+    background-image: linear-gradient(
+        150deg ,
+        #9500ff,
+        #09f,
+        #00DDFF
+        );
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    display: inline-block;
+    margin-right: 25px;
+  } */
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.7em 1.2em;
+  }
+
+  nav a:hover {
+    background-color: #007bff;
+  } 
+
+  @media (max-width: 768px) {
+    nav ul {
+      display: none;
+    }
+  } 
+
+  /* Esconder elementos del menú en pantallas pequeñas */
+@media (max-width: 768px) {
+    nav ul {
+      display: none;
+    } 
+
+    nav.menu-active ul {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background-color: #333;
+      width: 100%;
+    }
+
+    nav.menu-active li {
+      display: block;
+      text-align: center;
+      margin: 0;
+    }
+
+    nav.menu-active a {
+      display: block;
+      width: 100%;
+      padding: 1em;
+    }
+  }
+
+
+  /* Ocultar en pantallas grandes */
+  .menu-toggle {
+    display: none; 
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  /* Mostrar en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block; 
+    }
+  }
+

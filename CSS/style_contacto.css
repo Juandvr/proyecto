@@ -1,0 +1,81 @@
+/* Estilo del contenedor del navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Marca del navbar */
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Menú del navbar */
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* Elementos del menú del navbar */
+.navbar-menu li {
+    margin-left: 20px;
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+    background-color: #575757;
+}
+
+/* Toggle button for small screens */
+.navbar-toggle {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .navbar-menu li {
+        margin: 0;
+    }
+
+    .navbar-menu li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #575757;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+}
+
+/* Mostrar el menú cuando el toggle está activado */
+.navbar-menu.active {
+    display: flex;
+}
