@@ -4,7 +4,34 @@ html {
 }
 
 /*este es para que todo el fondo de la pagina quede con margen 0 y un color tenue*/
-
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+.nav-links li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.nav-links a:hover {
+  background-color: #09f;
+  text-decoration: none;
+}
 
 /*encabezado, color y medida*/
 header {
