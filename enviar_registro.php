@@ -1,32 +1,29 @@
 <?php
-include("conexion_registro.php");
+include 'db_connection.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $ID_Cliente = $_POST["ID_Cliente"];
-    $nombre = $_POST["nombre"];
-    $apellidos = $_POST["apellidos"];
-    $telefono = $_POST["telefono"];
-    $email = $_POST["email"];
-    $direccion = $_POST["direccion"];
-    $contraseña = $_POST["contraseña"];
-    
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtener los datos del formulario
+    $ID_Cliente = $_POST['ID_Cliente'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $direccion = $_POST['direccion'];
+    $password = $_POST['contraseña'];
 
-    $consulta = "INSERT INTO Cliente(ID_Cliente, nombre, apellidos, telefono, email, direccion, contraseña)
-    VALUES ('$ID_Cliente', '$nombre', '$apellidos', '$telefono', '$email', '$direccion', '$contraseña')";
+    // Encriptar la contraseña
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-    $resultado = mysqli_query($conexion, $consulta);
+    // Insertar en la base de datos
+    $sql = "INSERT INTO cliente (ID_Cliente, nombre, apellidos, telefono, email, direccion, contraseña)
+            VALUES ('$ID_Cliente', '$nombre', '$apellidos', '$telefono', '$email', '$direccion', '$password_hash')";
 
-    if ($resultado) {
-        echo "Registro exitoso";
+    if ($conn->query($sql) === TRUE) {
+        echo "Registro exitoso. <a href='ingreso.html'>Iniciar sesión</a>";
     } else {
-        echo "Fallo al registrar";
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    header("Location: confirmacion.html");
-} else {
-    header("Location: registro.html");
+    $conn->close();
 }
 ?>
-
-
-

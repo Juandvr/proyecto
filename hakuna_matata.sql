@@ -7,7 +7,7 @@ CREATE TABLE HAKUNA_MATATA.Cliente (
  telefono VARCHAR(50),
  email VARCHAR(50),
  direccion VARCHAR(50),
- contraseña VARCHAR(50)
+ contraseña VARCHAR(60)
  );
  
  CREATE TABLE HAKUNA_MATATA.Mascota (
