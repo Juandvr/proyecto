@@ -48,31 +48,3 @@ CREATE TABLE  HAKUNA_MATATA.Factura (
  FOREIGN KEY(ID_Empleados) REFERENCES Empleados(ID_Empleados),
  FOREIGN KEY(ID_Factura) REFERENCES Factura(ID_Factura)
  );
- 
-CREATE TABLE  HAKUNA_MATATA.Proveedor (
- ID_Proveedor INT AUTO_INCREMENT PRIMARY KEY, 
- nombre VARCHAR(50) , 
- apellidos VARCHAR(50),
- telefono VARCHAR(50),
- correo VARCHAR(50),
- direccion VARCHAR(50)
- );
- 
-  CREATE TABLE HAKUNA_MATATA.Producto (
- ID_Producto INT AUTO_INCREMENT PRIMARY KEY, 
- nombre VARCHAR(50) ,
- cantidad INT,
- ID_Proveedor INT,
- precio DECIMAL,
- FOREIGN KEY(ID_Proveedor) REFERENCES Proveedor(ID_Proveedor)
- );
- 
-CREATE TABLE HAKUNA_MATATA.idServicios_idProducto (
-ID_Servicios int,
-ID_Producto int,
-PRIMARY KEY (ID_Servicios, ID_Producto),
-FOREIGN KEY(ID_Producto) REFERENCES Producto(ID_Producto),
-FOREIGN KEY(ID_Servicios) REFERENCES Servicios(ID_Servicios)
-);
- 
-
