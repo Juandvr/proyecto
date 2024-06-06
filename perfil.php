@@ -40,18 +40,15 @@ if ($result->num_rows > 0) {
     <header id="masthead" class="site-header header-main-wrapper">
       <h1>HAKUNA MATATA PETS</h1>
       <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="quienesomos.html">quienes somos</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="contactanos.html">contactanos</a></li>
-          <li><a href="registro.html">registro</a></li>
-          <li><a href="ingreso.html">ingreso</a></li>
-          <li><a href="perfil.php">perfil</a></li>
-          <li><a href="cerrar_sesion.php">Cerrar sesión</a></li>
-        </ul>
-        <button class="menu-toggle">Menú</button>
-      </nav>
+			<ul class="nav-links">
+			  <li><a href="index.html"><strong>INICIO</strong></a></li>
+			  <li><a href="quienesomos.html"><strong>QUIÉNES SOMOS</strong></a></li>
+			  <li><a href="servicios.html"><strong>SERVICIOS</strong></a></li>
+			  <li><a href="registro.html"><strong>REGISTRO</strong></a></li>
+			  <li><a href="ingreso.html"><strong>INGRESO</strong></a></li>
+			</ul>
+			<button class="menu-toggle">Menú</button>
+		  </nav>
     </header>
 
     <div class="container">
