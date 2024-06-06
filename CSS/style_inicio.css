@@ -3,9 +3,6 @@
     text-align: center;
 }
 
-h1, h2 {color: #0bd0c6 ;
-}
-
 /*imagen perritos centrada*/
 .imagen {
     display: flex; 
@@ -101,7 +98,14 @@ article {
     height: 40px;
     background-color: aqua ;
  }
+
+ .subtitulo2 {
+    text-align: center;
+    font-size: 30px;
+}
+
 /*centrado*/
 .subtitulo3 {
     text-align: center;
+    font-size: 25px;
 }

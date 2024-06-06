@@ -16,18 +16,18 @@
 
 /* Columna que contiene el formulario */
 #formuRegistro .col-6 {
-    background-color: #e674de;
+    background-color: #78827e;
     margin-top: 20px;
-    border: 2px solid rgb(56, 5, 78);
+    border: 2px solid rgb(19, 13, 22);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 8px 10px rgb(173, 70, 211);
+    box-shadow: 0 8px 10px rgb(88, 85, 89);
 }
 
 /* Título del formulario */
 #formuRegistro h2 {
     text-align: center;
-    color: #333;
+    color: #0d0909;
     margin-bottom: 20px;
 }
 
@@ -35,7 +35,7 @@
 #formuRegistro .form-control {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -52,7 +52,7 @@
 #formuRegistro .btn {
     width: 100%;
     padding: 10px;
-    background-color: #8020b1;
+    background-color: #2e3f3a;
     border: none;
     border-radius: 4px;
     color: white;
@@ -63,7 +63,7 @@
 
 /* Botón de envío en hover */
 #formuRegistro .btn:hover {
-    background-color: #d12e93;
+    background-color: #787075;
 }
 
 /* Ajustes responsivos */
