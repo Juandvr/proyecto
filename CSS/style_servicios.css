@@ -8,11 +8,10 @@
 
 .parrafo1 p {
     text-align: center;
-    font-size: 25px;
-    
+    font-size: 25px; 
 }
 
-.imgpeluqueria img {
+.imgpeluqueria img{
     border-radius: 0.5rem;
     width: 300px;
     height: 250px;
@@ -30,7 +29,6 @@
 .container p {
     font-size: 20px;
 }
-
 
 .titulo2 h1 {
     color: rgb(13, 79, 51);
@@ -95,13 +93,8 @@ button {
 
 #servicioGuarderia, #servicioPeluqueria, #servicioPaseos {
     display: none;
+    text-align: center;
 }
-
-
-
-
-
 
 /* aca finaliza el estilo de la pagina de servicios, lo que esta por fuera de estos 
 comentarios es la base del formato*/
-
