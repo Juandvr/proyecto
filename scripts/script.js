@@ -1,3 +1,4 @@
+// Mostrar el contenido de los servicios
 let boton1 = document.getElementById('guarderia');
 let boton2 = document.getElementById('peluqueria');
 let boton3 = document.getElementById('paseos');
@@ -32,3 +33,25 @@ boton3.addEventListener('click', function() {
 
     paseos.style.display = visible ? 'none' : 'block';
 });
+
+// Mostrar el formulario
+
+let form = document.getElementById('modal');
+let btns = document.querySelectorAll('.agendar');
+let cerrar = document.querySelectorAll('.cerrar');
+
+btns.forEach(function(btn) {
+    btn.onclick = function() {
+      form.style.display = "block";
+    }
+  });
+  
+cerrar.onclick = function() { 
+    form.style.display = "none";
+}
+  
+window.onclick = function(event) {
+    if (event.target == form) {
+        form.style.display = "none";
+    }
+}
