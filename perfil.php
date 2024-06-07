@@ -47,6 +47,7 @@ if ($result->num_rows > 0) {
 			  <li><a href="servicios.php"><strong>SERVICIOS</strong></a></li>
 			  <li><a href="registro.html"><strong>REGISTRO</strong></a></li>
 			  <li><a href="ingreso.html"><strong>INGRESO</strong></a></li>
+        <li><a href="perfil.php"><strong>PERFIL</strong></a></li>
         <li><a href="cerrar_sesion.php"><strong>CERRAR SESION</strong></a></li>
 			</ul>
 			<button class="menu-toggle">Menú</button>
