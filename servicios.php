@@ -5,6 +5,7 @@
     <title>HAKUNA MATATA PETS</title>
     <link rel="stylesheet" href="CSS/style_servicios.css" />
     <link rel="stylesheet" href="CSS/style_base.css" />
+    <link rel="stylesheet" href="CSS/estilo_board.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -170,8 +171,8 @@
           </section>
         </article>
       </div>
-      <div id="modal" class="modal">
-      <div class="modal-content">
+      <div id="modal" class="modalf">
+      <div class="modalf-content">
       <span class="cerrar">&times;</span>
       <?php include 'PHP/crear.php'; ?>
       </div>
