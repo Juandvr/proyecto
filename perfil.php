@@ -25,6 +25,7 @@ if ($result->num_rows > 0) {
     <title>Perfil - HAKUNA MATATA PETS</title>
     <link rel="stylesheet" href="CSS/style_perfil.css" />
     <link rel="stylesheet" href="CSS/style_base.css" />
+    <link rel="stylesheet" href="CSS/estilo_board.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,6 +47,7 @@ if ($result->num_rows > 0) {
 			  <li><a href="servicios.php"><strong>SERVICIOS</strong></a></li>
 			  <li><a href="registro.html"><strong>REGISTRO</strong></a></li>
 			  <li><a href="ingreso.html"><strong>INGRESO</strong></a></li>
+        <li><a href="cerrar_sesion.php"><strong>CERRAR SESION</strong></a></li>
 			</ul>
 			<button class="menu-toggle">Menú</button>
 		  </nav>
