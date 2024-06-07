@@ -12,13 +12,12 @@ try {
     $consultaSQL = "DELETE FROM citas WHERE id =" . $id;
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
-    header('Location: /admin_dashboard/index.php');
+    header('Location: /proyecto/perfil.php');
 } catch (PDOException $error) {
     $resultado['error'] = true;
     $resultado['mensaje'] = $error->getMessage();
 }
 ?>
-<?php require "template/header.php"; ?>
 <div class="container mt-2">
     <div class="row">
         <div class="col-md-12">
@@ -29,4 +28,3 @@ try {
         </div>
     </div>
 </div>
-<?php require "template/footer.php"; ?>

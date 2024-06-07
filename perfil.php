@@ -45,8 +45,6 @@ if ($result->num_rows > 0) {
 			  <li><a href="index.html"><strong>INICIO</strong></a></li>
 			  <li><a href="quienesomos.html"><strong>QUIÉNES SOMOS</strong></a></li>
 			  <li><a href="servicios.php"><strong>SERVICIOS</strong></a></li>
-			  <li><a href="registro.html"><strong>REGISTRO</strong></a></li>
-			  <li><a href="ingreso.html"><strong>INGRESO</strong></a></li>
         <li><a href="perfil.php"><strong>PERFIL</strong></a></li>
         <li><a href="cerrar_sesion.php"><strong>CERRAR SESION</strong></a></li>
 			</ul>
@@ -69,6 +67,14 @@ if ($result->num_rows > 0) {
 
     <?php include 'PHP/index.php' ?>
 
+    <div id="modal" class="modalf">
+      <div class="modalf-content">
+      <span class="cerrar">&times;</span>
+      <div id="modalBody">
+      </div>
+      </div>
+    </div>
+
     <footer>
       <h4>Informacion de contacto</h4>
       <ul>
@@ -78,6 +84,7 @@ if ($result->num_rows > 0) {
       </ul>
       <p>@Copyright 2050 de nadie. Todos los derechos revertidos</p>
     </footer>
+    <script src="/proyecto/scripts/editar.js"></script>
   </body>
 </html>
 <?php
