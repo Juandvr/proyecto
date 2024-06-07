@@ -38,7 +38,7 @@ boton3.addEventListener('click', function() {
 
 let form = document.getElementById('modal');
 let btns = document.querySelectorAll('.agendar');
-let cerrar = document.querySelectorAll('.cerrar');
+let cerrar = document.getElementsByClassName("cerrar")[0];
 
 btns.forEach(function(btn) {
     btn.onclick = function() {
