@@ -1,23 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: ingreso.html"); // Redirigir al login si no está logueado
-    exit();
-}
-
-include 'db_connection.php';
-
-// Obtener información del usuario
-$usuario_id = $_SESSION['usuario_id'];
-$sql = "SELECT * FROM cliente WHERE ID_Cliente = '$usuario_id'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $usuario = $result->fetch_assoc();
-} else {
-    echo "Error al obtener los datos del usuario.";
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,20 +32,7 @@ if ($result->num_rows > 0) {
 		  </nav>
     </header>
 
-    <div class="container">
-      <div class="row" style="justify-content: center">
-        <div class="col-6">
-          <h2>Perfil de Usuario</h2>
-          <p><strong>Nombre:</strong> <?php echo $usuario['nombre']; ?></p>
-          <p><strong>Apellidos:</strong> <?php echo $usuario['apellidos']; ?></p>
-          <p><strong>Teléfono:</strong> <?php echo $usuario['telefono']; ?></p>
-          <p><strong>Email:</strong> <?php echo $usuario['email']; ?></p>
-          <p><strong>Dirección:</strong> <?php echo $usuario['direccion']; ?></p>
-        </div>
-      </div>
-    </div>
-
-    <?php include 'PHP/index.php' ?>
+    <?php include 'PHP/editar.php' ?>
 
     <footer>
       <h4>Informacion de contacto</h4>
@@ -79,6 +46,3 @@ if ($result->num_rows > 0) {
     <script src="/proyecto/scripts/editar.js"></script>
   </body>
 </html>
-<?php
-$conn->close();
-?>

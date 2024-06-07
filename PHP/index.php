@@ -67,8 +67,8 @@ if ($error) {
                                 <td><?php echo escapar($fila["fecha"]); ?></td>
                                 <td><?php echo escapar($fila["hora"]) ?></td>
                                 <td>
-                                    <span class=""><a href="<?= 'PHP/borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a></span>
-                                    <a href="#" class="editar" data-id="<?= escapar($fila['id']) ?>">✏️Editar</a>
+                                    <a href="<?= 'PHP/borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a>
+                                    <a href="<?= 'editar.php?id=' . escapar($fila["id"]) ?>" .>✏️Editar</a>
                                 </td>
                             </tr>
                     <?php
