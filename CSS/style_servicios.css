@@ -96,5 +96,16 @@ button {
     text-align: center;
 }
 
+.notificacion {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgb(12, 90, 64);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
 /* aca finaliza el estilo de la pagina de servicios, lo que esta por fuera de estos 
 comentarios es la base del formato*/

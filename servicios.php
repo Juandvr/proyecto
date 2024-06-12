@@ -189,6 +189,9 @@
       </ul>
       <p>@Copyright 2050 de nadie. Todos los derechos revertidos</p>
     </footer>
+    <div class="notificacion" id="notificacion">
+      ¡Necesitas estar registrado para agendar una cita!
+    </div>
     <script src="/proyecto/scripts/script.js"></script>
   </body>
 </html> 
