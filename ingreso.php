@@ -7,36 +7,42 @@ $resultado = '';
 $error = false;
 
 if (isset($_POST['submit'])) {
-// Obtener los datos del formulario
-$email = $_POST['correo'];
-$password = $_POST['password'];
+    // Obtener los datos del formulario
+    $email = $_POST['correo'];
+    $password = $_POST['password'];
 
-// Evitar inyección SQL
-$email = $conn->real_escape_string($email);
-$password = $conn->real_escape_string($password);
+    // Evitar inyección SQL
+    $email = $conn->real_escape_string($email);
 
-// Consulta para verificar las credenciales del usuario
-$sql = "SELECT * FROM cliente WHERE email = '$email'";
-$result = $conn->query($sql);
+    // Consulta para verificar las credenciales del usuario
+    $sql = "SELECT * FROM cliente WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    // El usuario existe, verificar la contraseña
-    $row = $result->fetch_assoc();
-    if (password_verify($password, $row['contraseña'])) {
-        // Contraseña correcta, iniciar sesión
-        $_SESSION['usuario_id'] = $row['ID_Cliente'];
-        $_SESSION['nombre'] = $row['nombre'];
-        header("Location: perfil.php"); // Redirigir a la página de perfil
+    if ($result->num_rows > 0) {
+        // El usuario existe, verificar la contraseña
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['contraseña'])) {
+            // Contraseña correcta, iniciar sesión
+            $_SESSION['usuario_id'] = $row['ID_Cliente'];
+            $_SESSION['nombre'] = $row['nombre'];
+            header("Location: perfil.php"); // Redirigir a la página de perfil
+            exit;
+        } else {
+            // Contraseña incorrecta
+            $resultado = "Usuario o contraseña incorrecta.";
+            $error = true;
+        }
     } else {
-        // Contraseña incorrecta
+        // El usuario no existe
         $resultado = "Usuario o contraseña incorrecta.";
+        $error = true;
     }
-} else {
-    // El usuario no existe
-    $resultado = "Usuario o contraseña incorrecta.";
-}
 
-$conn->close();
+    $stmt->close();
+    $conn->close();
 }
 ?>
 <!DOCTYPE html>
