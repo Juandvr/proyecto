@@ -3,6 +3,15 @@
 include 'funciones.php';
 include 'db_connection.php';
 
+$config = include 'PHP/config.php';
+$dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
+    try {
+        $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+    } catch (PDOException $error) {
+        echo 'Error en la base de datos: ' . $error->getMessage();
+        exit();
+    }
+
 if (isset($_POST['submit'])) {
     $usuario_id = $_SESSION['usuario_id'];
     $sql = "SELECT * FROM Cliente WHERE ID_Cliente = ?";
@@ -16,11 +25,8 @@ if (isset($_POST['submit'])) {
         'error' => false,
         'mensaje' => 'La cita para ' . htmlspecialchars($usuario['nombre']) . ' ha sido agregada con éxito'
     ];
-    $config = include 'PHP/config.php';
+
     try {
-        $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
-        $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-        
         // Insertar nueva mascota
         $nombre_mascota = $_POST['nombre_mascota'];
         $raza = $_POST['raza'];
@@ -38,18 +44,20 @@ if (isset($_POST['submit'])) {
         ]);
 
         $ID_Mascota = $conexion->lastInsertId();
-        
+
         // Insertar cita
         $fecha = $_POST['fecha'];
         $hora = $_POST['hora'];
+        $ID_Servicio = $_POST['servicio'];
 
-        $consultaCitaSQL = "INSERT INTO citas (ID_Cliente, ID_Mascota, fecha, hora) VALUES (:id_cliente, :id_mascota, :fecha, :hora)";
+        $consultaCitaSQL = "INSERT INTO citas (ID_Cliente, ID_Mascota, fecha, hora, ID_Servicio) VALUES (:id_cliente, :id_mascota, :fecha, :hora, :id_servicio)";
         $stmtCita = $conexion->prepare($consultaCitaSQL);
         $stmtCita->execute([
             ':id_cliente' => $usuario_id,
             ':id_mascota' => $ID_Mascota,
             ':fecha' => $fecha,
-            ':hora' => $hora
+            ':hora' => $hora,
+            ':id_servicio' => $ID_Servicio
         ]);
     } catch (PDOException $error) {
         $resultado['error'] = true;
@@ -101,6 +109,19 @@ if (isset($resultado)) {
                 <div class="form-group">
                     <label for="sexo">Sexo</label>
                     <input type="text" name="sexo" id="sexo" class="form-control" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="servicio">Servicio</label>
+                    <select name="servicio" id="servicio" class="form-control" required>
+                        <?php
+                        // Obtener los servicios preestablecidos desde la base de datos
+                        $sqlServicios = "SELECT * FROM servicios";
+                        foreach ($conexion->query($sqlServicios) as $servicio) {
+                            echo "<option value='" . $servicio['ID_Servicios'] . "'>" . htmlspecialchars($servicio['nombre']) . " - $" . htmlspecialchars($servicio['precio']) . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
                 <br>
                 <div class="form-group">

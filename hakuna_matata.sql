@@ -31,13 +31,9 @@ CREATE TABLE HAKUNA_MATATA.Empleados (
 
  CREATE TABLE HAKUNA_MATATA.Servicios (
  ID_Servicios INT AUTO_INCREMENT PRIMARY KEY,
- nombre VARCHAR(50) , 
- fecha DATE,
- ID_Mascota INT,
- ID_Empleados INT,
- precio DECIMAL,
- FOREIGN KEY(ID_Mascota) REFERENCES Mascota(ID_Mascota),
- FOREIGN KEY(ID_Empleados) REFERENCES Empleados(ID_Empleados)
+ nombre VARCHAR(50),
+ descripcion TEXT,
+ precio DECIMAL
  );
 
 CREATE TABLE HAKUNA_MATATA.citas (
@@ -46,8 +42,10 @@ ID_Cliente INT,
 ID_Mascota INT,
 fecha DATE,
 hora TIME,
+ID_Servicio INT,
 creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 actualizado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY(ID_Cliente) REFERENCES Cliente(ID_Cliente),
-FOREIGN KEY(ID_Mascota) REFERENCES Mascota(ID_Mascota)
+FOREIGN KEY(ID_Mascota) REFERENCES Mascota(ID_Mascota),
+FOREIGN KEY(ID_Servicio) REFERENCES Servicios(ID_Servicios)
 );
