@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: ingreso.html"); // Redirigir al login si no está logueado
+    header("Location: ingreso.php"); // Redirigir al login si no está logueado
     exit();
 }
 

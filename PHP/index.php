@@ -5,7 +5,14 @@ $config = include 'config.php';
 try {
     $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-    $consultaSQL = "SELECT * FROM citas WHERE email LIKE '%" . $usuario['email'] . "%'";
+    
+    // Consulta SQL para obtener los datos necesarios de citas, cliente y mascota
+    $consultaSQL = "SELECT ci.id AS id_cita, c.nombre AS nombre_cliente, c.apellidos AS apellido, c.email, c.telefono, m.nombre AS nombre_mascota, m.raza, m.tamaño AS tamano, m.sexo, ci.fecha, ci.hora
+                    FROM Citas ci
+                    INNER JOIN Mascota m ON ci.ID_Mascota = m.ID_Mascota
+                    INNER JOIN Cliente c ON ci.ID_Cliente = c.ID_Cliente
+                    WHERE c.email LIKE '%" . $usuario['email'] . "%'";
+    
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
     $citas = $sentencia->fetchAll();
@@ -55,7 +62,7 @@ if ($error) {
                         foreach ($citas as $fila) {
                     ?>
                             <tr>
-                                <td><?php echo escapar($fila["id"]); ?></td>
+                                <td><?php echo escapar($fila["id_cita"]); ?></td>
                                 <td><?php echo escapar($fila["nombre_cliente"]); ?></td>
                                 <td><?php echo escapar($fila["apellido"]); ?></td>
                                 <td><?php echo escapar($fila["email"]); ?></td>
@@ -65,17 +72,19 @@ if ($error) {
                                 <td><?php echo escapar($fila["tamano"]); ?></td>
                                 <td><?php echo escapar($fila["sexo"]); ?></td>
                                 <td><?php echo escapar($fila["fecha"]); ?></td>
-                                <td><?php echo escapar($fila["hora"]) ?></td>
+                                <td><?php echo escapar($fila["hora"]); ?></td>
                                 <td>
-                                    <a href="<?= 'PHP/borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a>
-                                    <a href="<?= 'editar.php?id=' . escapar($fila["id"]) ?>" .>✏️Editar</a>
+                                    <a href="<?= 'PHP/borrar.php?id=' . escapar($fila["id_cita"]) ?>">🗑️ Borrar</a>
+                                    <a href="<?= 'editar.php?id=' . escapar($fila["id_cita"]) ?>">✏️ Editar</a>
                                 </td>
                             </tr>
                     <?php
                         }
+                    } else {
+                        echo '<tr><td colspan="12">No se encontraron citas.</td></tr>';
                     }
                     ?>
-                <tbody>
+                </tbody>
             </table>
         </div>
     </div>

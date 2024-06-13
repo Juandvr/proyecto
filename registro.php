@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $stmt->bind_param("sssssss", $ID_Cliente, $nombre, $apellidos, $telefono, $email, $direccion, $password_hash);
 
     if ($stmt->execute()) {
-        $resultado = "Registro exitoso. <a href='ingreso.html'>Iniciar sesión</a>";
+        $resultado = "Registro exitoso. <a href='ingreso.php'>Iniciar sesión</a>";
     } else {
         $resultado = "Error: " . $stmt->error;
         $error = true;
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="quienesomos.html"><strong>QUIÉNES SOMOS</strong></a></li>
                 <li><a href="servicios.php"><strong>SERVICIOS</strong></a></li>
                 <li><a href="registro.php"><strong>REGISTRO</strong></a></li>
-			          <li><a href="ingreso.php"><strong>INGRESO</strong></a></li>
+			    <li><a href="ingreso.php"><strong>INGRESO</strong></a></li>
                 <li><a href="perfil.php"><strong>PERFIL</strong></a></li>
             </ul>
             <button class="menu-toggle">Menú</button>

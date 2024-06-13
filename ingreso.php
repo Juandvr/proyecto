@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
 				<li><a href="quienesomos.html"><strong>QUIÉNES SOMOS</strong></a></li>
 				<li><a href="servicios.php"><strong>SERVICIOS</strong></a></li>
 				<li><a href="registro.php"><strong>REGISTRO</strong></a></li>
-			  	<li><a href="ingreso.php"><strong>INGRESO</strong></a></li>
+			  <li><a href="ingreso.php"><strong>INGRESO</strong></a></li>
 				<li><a href="perfil.php"><strong>PERFIL</strong></a></li>
 			</ul>
 			<button class="menu-toggle">Menú</button>

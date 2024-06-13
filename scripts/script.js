@@ -48,7 +48,6 @@ function comprobarAut() {
     }
   };
   xhr.send();
-  console.log('Se ha cargado la pagina');
 }
 
 window.onload = comprobarAut();
