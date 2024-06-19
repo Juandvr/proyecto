@@ -49,3 +49,7 @@ FOREIGN KEY(ID_Cliente) REFERENCES Cliente(ID_Cliente),
 FOREIGN KEY(ID_Mascota) REFERENCES Mascota(ID_Mascota),
 FOREIGN KEY(ID_Servicio) REFERENCES Servicios(ID_Servicios)
 );
+
+
+
+DROP DATABASE HAKUNA_MATATA;
