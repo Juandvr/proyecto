@@ -14,91 +14,9 @@ session_start();
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <style>
-    body {
-      background-color: rgb(255, 255, 255);
-    }
-
-    header {
-      background-color: rgb(3, 68, 46);
-      padding: 30px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .header-main-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .titulo_principal h1 {
-      font-size: 80px;
-      text-align: center;
-      color: white;
-      background-color: rgb(3, 68, 46);
-      margin: 0 auto;
-    }
-
-    nav {
-      flex: 1;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .nav-links li {
-      margin: 0 10px;
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .nav-links.show {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-    }
-  </style>
 </head>
 
-<body style="background-color: rgb(255, 255, 255)">
-  <div class="titulo_principal">
-    <h1>HAKUNA MATATA PETS</h1>
-  </div>
-  <header id="masthead" class="site-header header-main-wrapper">
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html"><strong>INICIO</strong></a></li>
-      <li><a href="quienesomos.html"><strong>QUIÉNES SOMOS</strong></a></li>
-      <li><a href="servicios.php"><strong>SERVICIOS</strong></a></li>
-      <li><a href="registro.php"><strong>REGISTRO</strong></a></li>
-      <li><a href="ingreso.php"><strong>INGRESO</strong></a></li>
-      <li><a href="perfil.php"><strong>PERFIL</strong></a></li>
-    </ul>
-    <button class="menu-toggle">Menú</button>
-  </nav>
-  </header>
+  <?php include 'template/header.php'?>
   <!-- De acá hacia arriba NO TOCAR, espacio para comenzar a editar -->
   <!-- parte de David  -->
   <main>
@@ -243,19 +161,4 @@ session_start();
   </main>
   <br />
   <!-- De acá hacia abajo NO TOCAR -->
-  <footer>
-    <h4>Informacion de contacto</h4>
-    <ul>
-      <li>Telefono: 1234567</li>
-      <li>Correo: hakunamatatapets@gmail.com</li>
-      <li>Direccion: Calle 10 76 18</li>
-    </ul>
-    <p>@Copyright 2050 de nadie. Todos los derechos revertidos</p>
-  </footer>
-  <div class="notificacion" id="notificacion">
-    ¡Necesitas estar registrado para agendar una cita!
-  </div>
-  <script src="/proyecto/scripts/script.js"></script>
-</body>
-
-</html>
+  <?php include 'template/footer.php'?>
