@@ -7,7 +7,8 @@ CREATE TABLE HAKUNA_MATATA.Cliente (
  telefono VARCHAR(50),
  email VARCHAR(50),
  direccion VARCHAR(50),
- contraseña VARCHAR(60)
+ contraseña VARCHAR(60),
+ rol VARCHAR(15)
  );
  
  CREATE TABLE HAKUNA_MATATA.Mascota (
@@ -49,7 +50,3 @@ FOREIGN KEY(ID_Cliente) REFERENCES Cliente(ID_Cliente),
 FOREIGN KEY(ID_Mascota) REFERENCES Mascota(ID_Mascota),
 FOREIGN KEY(ID_Servicio) REFERENCES Servicios(ID_Servicios)
 );
-
-
-
-DROP DATABASE HAKUNA_MATATA;
