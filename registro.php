@@ -4,6 +4,7 @@ include 'db_connection.php';
 
 $resultado = '';
 $error = false;
+$errores = [];
 
 if (isset($_POST['submit'])) {
     // Obtener los datos del formulario
@@ -15,22 +16,83 @@ if (isset($_POST['submit'])) {
     $direccion = $_POST['direccion'];
     $password = $_POST['contraseña'];
 
-    // Encriptar la contraseña
-    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    // Validar que no haya campos vacíos
+    if (empty($ID_Cliente) || empty($nombre) || empty($apellidos) || empty($telefono) || empty($email) || empty($direccion) || empty($password)) {
+        $errores[] = "Todos los campos son obligatorios.";
+    }
 
-    // Preparar y ejecutar la consulta SQL
-    $stmt = $conn->prepare("INSERT INTO cliente (ID_Cliente, nombre, apellidos, telefono, email, direccion, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssss", $ID_Cliente, $nombre, $apellidos, $telefono, $email, $direccion, $password_hash);
+    // Validar el ID_Cliente (solo números y máximo 10 dígitos)
+    if (!preg_match('/^\d{1,10}$/', $ID_Cliente)) {
+        $errores[] = "El número de indenditicación debe ser numérico y tener un máximo de 10 dígitos.";
+    }
 
-    if ($stmt->execute()) {
-        $resultado = "Registro exitoso. <a href='ingreso.php'>Iniciar sesión</a>";
-    } else {
-        $resultado = "Error: " . $stmt->error;
-        $error = true;
+    // Validar el correo electrónico
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errores[] = "El formato del correo electrónico no es válido.";
+    }
+
+    // Validar el número de teléfono (exactamente 11 dígitos)
+    if (!preg_match('/^\d{10}$/', $telefono)) {
+        $errores[] = "El número de teléfono debe tener exactamente 10 dígitos.";
+    }
+
+    // Validar el nombre (solo letras y espacios, máximo 20 caracteres)
+    if (!preg_match('/^[a-zA-Z\s]{1,20}$/', $nombre)) {
+        $errores[] = "El nombre solo puede contener letras, espacios y tener un máximo de 20 caracteres.";
+    }
+
+    // Validar los apellidos (solo letras y espacios, máximo 20 caracteres)
+    if (!preg_match('/^[a-zA-Z\s]{1,20}$/', $apellidos)) {
+        $errores[] = "Los apellidos solo pueden contener letras, espacios y tener un máximo de 20 caracteres.";
+    }
+
+    // Validar la contraseña (1 caracter especial, 1 mayúscula y máximo 10 caracteres de longitud)
+    if (!preg_match('/^(?=.*[A-Z])(?=.*[\W]).{1,10}$/', $password)) {
+        $errores[] = "La contraseña debe tener al menos 1 caracter especial, 1 letra mayúscula y un máximo de 10 caracteres de longitud.";
+    }
+
+    // Verificar si el correo ya está registrado
+    $stmt = $conn->prepare("SELECT email FROM cliente WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $errores[] = "El correo electrónico ya está registrado.";
     }
 
     $stmt->close();
-    $conn->close();
+
+
+
+
+
+
+
+
+
+    // Si no hay errores, proceder con el registro
+    if (empty($errores)) {
+        // Encriptar la contraseña
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+        // Preparar y ejecutar la consulta SQL
+        $stmt = $conn->prepare("INSERT INTO cliente (ID_Cliente, nombre, apellidos, telefono, email, direccion, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $ID_Cliente, $nombre, $apellidos, $telefono, $email, $direccion, $password_hash);
+
+        if ($stmt->execute()) {
+            $resultado = "Registro exitoso. <a href='ingreso.php'>Iniciar sesión</a>";
+        } else {
+            $resultado = "Error: " . $stmt->error;
+            $error = true;
+        }
+
+        $stmt->close();
+        $conn->close();
+    } else {
+        $error = true;
+        $resultado = implode("<br>", $errores);
+    }
 }
 ?>
 <!DOCTYPE html>

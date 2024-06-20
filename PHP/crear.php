@@ -4,12 +4,12 @@ include 'funciones.php';
 
 $config = include 'PHP/config.php';
 $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
-    try {
-        $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-    } catch (PDOException $error) {
-        echo 'Error en la base de datos: ' . $error->getMessage();
-        exit();
-    }
+try {
+    $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+} catch (PDOException $error) {
+    echo 'Error en la base de datos: ' . $error->getMessage();
+    exit();
+}
 
 if (isset($_POST['submit'])) {
     $usuario_id = $_SESSION['usuario_id'];
@@ -44,11 +44,21 @@ if (isset($_POST['submit'])) {
 
         $ID_Mascota = $conexion->lastInsertId();
 
-        // Insertar cita
+        // Validar fecha y hora
         $fecha = $_POST['fecha'];
         $hora = $_POST['hora'];
         $ID_Servicio = $_POST['servicio'];
+        $fechaActual = date('Y-m-d');
 
+        if ($fecha < $fechaActual) {
+            throw new Exception('La fecha de la cita no puede ser en el pasado.');
+        }
+
+        if ($hora < "07:00" || $hora > "19:00") {
+            throw new Exception('La hora de la cita debe estar entre las 07:00 AM y las 07:00 PM.');
+        }
+
+        // Insertar cita
         $consultaCitaSQL = "INSERT INTO citas (ID_Cliente, ID_Mascota, fecha, hora, ID_Servicio) VALUES (:id_cliente, :id_mascota, :fecha, :hora, :id_servicio)";
         $stmtCita = $conexion->prepare($consultaCitaSQL);
         $stmtCita->execute([
@@ -130,7 +140,7 @@ if (isset($resultado)) {
                 <br>
                 <div class="form-group">
                     <label for="hora">Hora</label>
-                    <input type="time" name="hora" id="hora" class="form-control" required>
+                    <input type="time" name="hora" id="hora" class="form-control" min="07:00" max="19:00" required>
                 </div>
                 <br>
                 <div class="form-group">
@@ -141,3 +151,20 @@ if (isset($resultado)) {
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha').setAttribute('min', today);
+
+        var timeInput = document.getElementById('hora');
+        timeInput.addEventListener('input', function() {
+            var selectedTime = timeInput.value;
+            if (selectedTime < "07:00" || selectedTime > "19:00") {
+                timeInput.setCustomValidity('La hora debe estar entre las 07:00 AM y las 07:00 PM');
+            } else {
+                timeInput.setCustomValidity('');
+            }
+        });
+    });
+</script>
