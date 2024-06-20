@@ -1,4 +1,6 @@
-// Mostrar el contenido de los servicios
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Mostrar el contenido de los servicios
 let boton1 = document.getElementById('guarderia');
 let boton2 = document.getElementById('peluqueria');
 let boton3 = document.getElementById('paseos');
@@ -59,7 +61,7 @@ function mostrarAviso() {
   notificacion.style.display = 'block';
   setTimeout(function() {
     notificacion.style.display = 'none';
-  }, 3000);
+  }, 5000);
 }
 
 // Mostrar el formulario
@@ -88,3 +90,4 @@ window.onclick = function(event) {
         form.style.display = "none";
     }
 }
+})

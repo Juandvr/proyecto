@@ -1,7 +1,6 @@
 <?php
 
 include 'funciones.php';
-include 'db_connection.php';
 
 $config = include 'PHP/config.php';
 $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];

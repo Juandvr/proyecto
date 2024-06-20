@@ -3,7 +3,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>HAKU PETS</title>
@@ -15,7 +14,6 @@ session_start();
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 </head>
-
   <?php include 'template/header.php'?>
   <!-- De acá hacia arriba NO TOCAR, espacio para comenzar a editar -->
   <!-- parte de David  -->
@@ -160,5 +158,9 @@ session_start();
     </div>
   </main>
   <br />
+  <div class="notificacion" id="notificacion">
+    ¡Necesitas estar registrado para agendar una cita!
+  </div>
+  <script src="scripts/script.js"></script>
   <!-- De acá hacia abajo NO TOCAR -->
   <?php include 'template/footer.php'?>
