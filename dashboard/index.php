@@ -5,11 +5,7 @@ $config = include 'config.php';
 try {
     $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-    if (isset($_POST['apellido'])) {
-        $consultaSQL = "SELECT * FROM cliente WHERE apellido LIKE '%" . $_POST['apellido'] . "%'";
-    } else {
-        $consultaSQL = "SELECT * FROM cliente";
-    }
+    $consultaSQL = "SELECT * FROM cliente";
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
     $usuarios = $sentencia->fetchAll();
@@ -39,6 +35,7 @@ if ($error) {
         <div class="col-md-12">
             <br>
             <a class="boton" href="crear.php"><strong>Crear usuario</strong></a>
+            <a class="boton" href="reporte_usuario.php" target="_blank"><strong>Generar reporte</strong></a>
             <br>
             <br>
             <hr>
