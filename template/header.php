@@ -64,12 +64,44 @@
 				  <li class="nav-item">
 					<a class="nav-link" href="servicios.php"><strong>SERVICIOS</strong></a>
 				  </li>
+				  </li>
+          <?php if (!isset($_SESSION['usuario_id'])) { ?>
 				  <li class="nav-item">
+					<a class="nav-link" href="registro.php"><strong>REGISTRO</strong></a>
+				  </li>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="ingreso.php"><strong>INGRESO</strong></a>
+				  </li>
+          <?php } ?>
+          <?php 
+          if (isset($_SESSION['usuario_id'])) { 
+            include './db_connection.php';
+            $id = $_SESSION['usuario_id'];
+            $sql = "SELECT * FROM cliente WHERE ID_Cliente = '$id'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+              $usuario = $result->fetch_assoc();
+            }
+            if ($usuario['rol'] == 'admin') {
+            ?>
+          <li class="nav-item">
 					<a class="nav-link" href="perfil.php"><strong>PERFIL</strong></a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" href="cerrar_sesion.php"><strong>CERRAR SESION</strong></a>
 				  </li>
+          <li class="nav-item">
+					<a class="nav-link" href="dashboard/index.php"><strong>DASHBOARD</strong></a>
+				  </li>
+          <?php } else { ?>
+          <li class="nav-item">
+					<a class="nav-link" href="perfil.php"><strong>PERFIL</strong></a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="cerrar_sesion.php"><strong>CERRAR SESION</strong></a>
+				  </li>
+          <?php } }?>
 				</ul>
 			  </div>
 			</div>
