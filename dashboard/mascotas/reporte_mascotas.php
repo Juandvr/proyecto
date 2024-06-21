@@ -3,8 +3,6 @@ require('../fpdf/fpdf.php');
 
 class PDF extends FPDF
 {
-    protected $totalClientes;
-
     // Conectar a la base de datos y cargar datos
     function LoadData()
     {
@@ -14,21 +12,28 @@ class PDF extends FPDF
         try {
             $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
             $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-            $consultaSQL = "SELECT nombre, apellidos, telefono, correo FROM Empleados";
+            
+            // Consulta para obtener clientes y sus mascotas
+            $consultaSQL = "
+                SELECT c.nombre AS nombre_cliente, c.apellidos, c.telefono, c.email, m.nombre AS nombre_mascota, m.raza
+                FROM Cliente c
+                LEFT JOIN Mascota m ON c.ID_Cliente = m.ID_Cliente
+                ORDER BY c.nombre ASC
+            ";
             $sentencia = $conexion->prepare($consultaSQL);
             $sentencia->execute();
             $results = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             
             foreach ($results as $row) {
-                $data[] = array($row['nombre'], $row['apellidos'], $row['telefono'], $row['correo']);
+                $data[] = array(
+                    $row['nombre_cliente'],
+                    $row['apellidos'],
+                    $row['telefono'],
+                    $row['email'],
+                    $row['nombre_mascota'],
+                    $row['raza']
+                );
             }
-            
-            // Obtener el total de clientes
-            $consultaSQL = "SELECT COUNT(*) AS total FROM Empleados";
-            $sentencia = $conexion->prepare($consultaSQL);
-            $sentencia->execute();
-            $this->totalClientes = $sentencia->fetch(PDO::FETCH_ASSOC)['total'];
-            
         } catch (PDOException $error) {
             echo "Error: " . $error->getMessage();
         }
@@ -46,7 +51,7 @@ class PDF extends FPDF
         // Mover a la derecha
         $this->Cell(80);
         // Título
-        $this->Cell(60,10,'Lista de Empleados',1,0,'C');
+        $this->Cell(90,10,'Lista de clientes y sus mascotas',1,0,'C');
         // Salto de línea
         $this->Ln(20);
     }
@@ -54,12 +59,12 @@ class PDF extends FPDF
     function ImprovedTable($header, $data)
     {
         // Ajusta la posición de la tabla aquí
-        $startX = 20; // Posición X
+        $startX = 10; // Posición X
         $startY = 50; // Posición Y
         $this->SetXY($startX, $startY);
 
         // Anchuras de las columnas
-        $w = array(40, 50, 30, 60);
+        $w = array(30, 30, 30, 40, 30, 30);
         
         // Cabecera
         for($i=0; $i<count($header); $i++) {
@@ -73,19 +78,14 @@ class PDF extends FPDF
         // Datos
         foreach($data as $row)
         {
-            $this->Cell($w[0], 6, $row[0], 'LR');
-            $this->Cell($w[1], 6, $row[1], 'LR');
-            $this->Cell($w[2], 6, $row[2], 'LR');
-            $this->Cell($w[3], 6, $row[3], 'LR');
+            for($i=0; $i<count($w); $i++) {
+                $this->Cell($w[$i], 6, $row[$i], 'LR');
+            }
             $this->Ln();
             $this->SetX($startX); // Reinicia la posición X para cada fila
         }
         // Línea de cierre
         $this->Cell(array_sum($w), 0, '', 'T');
-
-        // Mostrar el total de clientes
-        $this->Ln(10); // Espacio antes del total
-        $this->Cell(0, 10, 'Total de empleados: ' . $this->totalClientes, 0, 1, 'C');
     }
 
     // Pie de página
@@ -103,7 +103,7 @@ class PDF extends FPDF
 // Creación de instancia de la clase heredada
 $pdf = new PDF();
 // Encabezados de las columnas
-$header = array('Nombre', 'Apellidos', 'Telefono', 'Email');
+$header = array('Nombre', 'Apellidos', 'Telefono', 'Email', 'Mascota', 'Raza');
 // Carga de datos
 $data = $pdf->LoadData();
 $pdf->AliasNbPages();

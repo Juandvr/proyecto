@@ -35,6 +35,7 @@ if ($error) {
         <div class="col-md-12">
             <br>
             <a href="mascotas/crear_mascotas.php" class="boton"><strong>Agregar una mascota</strong></a>
+            <a class="boton" href="mascotas/reporte_mascotas.php" target="_blank"><strong>Generar reporte</strong></a>
             <br>
             <br>
             <hr>
