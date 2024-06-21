@@ -35,6 +35,7 @@ if ($error) {
         <div class="col-md-12">
             <br>
             <a href="citas/crear_citas.php" class="boton"><strong>Agendar una cita</strong></a>
+            <a class="boton" href="citas/reporte_citas.php" target="_blank"><strong>Generar reporte</strong></a>
             <br>
             <br>
             <hr>
