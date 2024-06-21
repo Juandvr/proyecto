@@ -12,7 +12,7 @@ class PDF extends FPDF
         try {
             $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
             $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-            $consultaSQL = "SELECT nombre, apellidos, telefono, email FROM Cliente";
+            $consultaSQL = "SELECT nombre, apellidos, telefono, email FROM Cliente ORDER BY nombre ASC";
             $sentencia = $conexion->prepare($consultaSQL);
             $sentencia->execute();
             $results = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -83,7 +83,7 @@ class PDF extends FPDF
         // Arial italic 8
         $this->SetFont('Arial','I',8);
         // Número de página
-        $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+        $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
     }
 }
 
