@@ -12,7 +12,7 @@ try {
     $consultaSQL = "DELETE FROM servicios WHERE ID_Servicios =" . $id;
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
-    header('Location: /admin_dashboard/servicios/index_servicios.php');
+    header('Location: /proyecto/dashboard/servicios/index_servicios.php');
 } catch (PDOException $error) {
     $resultado['error'] = true;
     $resultado['mensaje'] = $error->getMessage();

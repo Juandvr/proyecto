@@ -12,7 +12,7 @@ try {
     $consultaSQL = "DELETE FROM empleados WHERE ID_Empleados =" . $id;
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
-    header('Location: /admin_dashboard/empleados/index_empleados.php');
+    header('Location: /proyecto/dashboard/empleados/index_empleados.php');
 } catch (PDOException $error) {
     $resultado['error'] = true;
     $resultado['mensaje'] = $error->getMessage();

@@ -9,10 +9,10 @@ try {
     $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     $id = $_GET['id'];
-    $consultaSQL = "DELETE FROM cliente WHERE ID_Cliente =" . $id;
+    $consultaSQL = "UPDATE Cliente SET estado = 'inactivo' WHERE ID_Cliente =" . $id;
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
-    header('Location: /admin_dashboard/index.php');
+    header('Location: /proyecto/dashboard/index.php');
 } catch (PDOException $error) {
     $resultado['error'] = true;
     $resultado['mensaje'] = $error->getMessage();

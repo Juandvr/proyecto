@@ -8,7 +8,8 @@ CREATE TABLE HAKUNA_MATATA.Cliente (
  email VARCHAR(50),
  direccion VARCHAR(50),
  contraseña VARCHAR(60),
- rol VARCHAR(15)
+ rol VARCHAR(15) DEFAULT 'usuario',
+ estado VARCHAR(20) DEFAULT 'activo'
  );
  
  CREATE TABLE HAKUNA_MATATA.Mascota (

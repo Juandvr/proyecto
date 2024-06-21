@@ -12,7 +12,7 @@ try {
     $consultaSQL = "DELETE FROM mascota WHERE ID_Mascota =" . $id;
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
-    header('Location: /admin_dashboard/mascotas/index_mascotas.php');
+    header('Location: /proyecto/dashboard/mascotas/index_mascotas.php');
 } catch (PDOException $error) {
     $resultado['error'] = true;
     $resultado['mensaje'] = $error->getMessage();
