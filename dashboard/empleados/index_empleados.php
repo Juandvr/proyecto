@@ -39,7 +39,7 @@ if ($error) {
         <div class="col-md-12">
             <br>
             <a href="empleados/crear_empleados.php" class="boton"><strong>Agregar un empleado</strong></a>
-            <a class="boton" href="empleados/reporte_empleado.php" target="_blank"><strong>Generar reporte</strong></a>
+            <a class="boton" href="empleados/reporte_empleados.php" target="_blank"><strong>Generar reporte</strong></a>
             <br>
             <br>
             <hr>
