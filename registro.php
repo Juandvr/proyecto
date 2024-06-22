@@ -103,6 +103,7 @@ if (isset($_POST['submit'])) {
     <title>HAKUNA MATATA PETS</title>
     <link rel="stylesheet" href="CSS/style_registro.css" />
     <link rel="stylesheet" href="CSS/style_base.css" />
+    <link rel="stylesheet" href="CSS/estilo_board.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
@@ -135,13 +136,20 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="direccion" placeholder="Digita tu direccion" class="form-control" /><br />
                     <input type="password" name="contraseña" placeholder="Digita tu contraseña" class="form-control" /><br />
                     <input type="checkbox" name="terminos">
-                    <label for="terminos" style="color:white;">Acepto los terminos y condiciones</label> <br /><br />
+                    <label for="terminos" style="color:white;">Autorizo el <a href="#" id="link">tratamiento de mis datos personales</a></label> <br /><br />
                     <input type="submit" name="submit" value="REGISTRARSE" class="btn btn-danger" />
                 </form>
                 <br />
             </div>
         </div>
     </div>
+    <div id="modal" class="modalf">
+      <div class="modalf-content">
+        <span class="cerrar">&times;</span>
+        <p>Prueba de modal</p>
+      </div>
+    </div>
+    <script src="./scripts/datos.js"></script>
     <!--div container -->
     <br />
     <!-- De acá hacia abajo NO TOCAR -->
