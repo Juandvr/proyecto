@@ -134,6 +134,8 @@ if (isset($_POST['submit'])) {
                     <input type="email" name="email" placeholder="Digita tu email" class="form-control" /><br />
                     <input type="text" name="direccion" placeholder="Digita tu direccion" class="form-control" /><br />
                     <input type="password" name="contraseña" placeholder="Digita tu contraseña" class="form-control" /><br />
+                    <input type="checkbox" name="terminos">
+                    <label for="terminos" style="color:white;">Acepto los terminos y condiciones</label> <br /><br />
                     <input type="submit" name="submit" value="REGISTRARSE" class="btn btn-danger" />
                 </form>
                 <br />
