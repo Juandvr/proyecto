@@ -4,21 +4,20 @@ include 'funciones.php';
 
 $config = include 'PHP/config.php';
 $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
-try {
+try { //intenta ejecitar el codigo 
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
-} catch (PDOException $error) {
+} catch (PDOException $error) { //ejecita lo siguiente solo si hay un error
     echo 'Error en la base de datos: ' . $error->getMessage();
     exit();
 }
 
-if (isset($_POST['submit'])) {
-    $usuario_id = $_SESSION['usuario_id'];
-    $sql = "SELECT * FROM Cliente WHERE ID_Cliente = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $usuario_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $usuario = $result->fetch_assoc();
+if (isset($_POST['submit'])) {  // verifica si se envió el formulario 
+    $usuario_id = $_SESSION['usuario_id']; //acceder al id del usuario
+    $sql = "SELECT * FROM Cliente WHERE ID_Cliente = ?"; // consulta: busca el cliente que cohincida con el id 
+    $stmt = $conn->prepare($sql); // se prepara la conexion
+    $stmt->bind_param("i", $usuario_id); // se vincula el marcador de posición con usuario-id y que sea tipo entero
+    $result = $stmt->get_result(); // lo que salga lo guarda en result
+    $usuario = $result->fetch_assoc(); // convierte dserult en un array y lo guarda en usuario
 
     $resultado = [
         'error' => false,

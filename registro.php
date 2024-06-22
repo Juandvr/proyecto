@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
         $errores[] = "El formato del correo electrónico no es válido.";
     }
 
-    // Validar el número de teléfono (exactamente 11 dígitos)
+    // Validar el número de teléfono (exactamente 10 dígitos)
     if (!preg_match('/^\d{10}$/', $telefono)) {
         $errores[] = "El número de teléfono debe tener exactamente 10 dígitos.";
     }
@@ -62,14 +62,6 @@ if (isset($_POST['submit'])) {
     }
 
     $stmt->close();
-
-
-
-
-
-
-
-
 
     // Si no hay errores, proceder con el registro
     if (empty($errores)) {
@@ -104,8 +96,6 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="CSS/style_registro.css" />
     <link rel="stylesheet" href="CSS/style_base.css" />
     <link rel="stylesheet" href="CSS/estilo_board.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>

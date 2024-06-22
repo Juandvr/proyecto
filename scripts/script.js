@@ -1,10 +1,12 @@
+// La función se ejecuta solo cuando la pagina termina de cargar
 document.addEventListener('DOMContentLoaded', () => {
-
-  // Mostrar el contenido de los servicios
+   //  Mostrar el contenido de los servicios
+//imagen
 let boton1 = document.getElementById('guarderia');
 let boton2 = document.getElementById('peluqueria');
 let boton3 = document.getElementById('paseos');
 
+//contenido 
 let guarderia = document.getElementById('servicioGuarderia');
 let peluqueria = document.getElementById('servicioPeluqueria');
 let paseos = document.getElementById('servicioPaseos');
@@ -36,7 +38,7 @@ boton3.addEventListener('click', function() {
     paseos.style.display = visible ? 'none' : 'block';
 });
 
-// Comprobar si esta autenticado
+// Comprobar si esta autenticado y si no lo está mostrar mensaje de que debe registrarse
 
 let autenticado = false;
 
@@ -54,7 +56,7 @@ function comprobarAut() {
 
 window.onload = comprobarAut();
 
-// Función para mostrar la notificación
+// Función para mostrar la notificación por 5 segundos
 
 function mostrarAviso() {
   let notificacion = document.getElementById('notificacion');

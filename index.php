@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); ?>  <!--inicio de sesión con php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +6,8 @@
 	<meta charset="UTF-8">
 	<title>HAKUNA MATATA PETS</title>
 	<link rel="stylesheet" href="CSS/style_inicio.css">
-	<link rel="stylesheet" href="CSS/style_base.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="CSS/style_base.css"> 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -24,15 +22,15 @@
 				<img src="IMAGENES/mascotas.jpg" width="400" alt="perros_y_gatos">
 			</div>
 			<p><b><i>
-						<center>"El amor por todas las criaturas vivientes es el más noble tributo del ser humano"</p>
-			</b></i></center>
+						<p>"El amor por todas las criaturas vivientes es el más noble tributo del ser humano"</p>
+			</b></i></p>
 			<p><b><i></i>
-					<center>Charles Darwin</p></b></i></center>
+					<p>Charles Darwin</p></b></i></p>
 		</article>
 	</section>
 	<br>
 	<h2 class="subtitulo2">
-		<center>Juntos creamos momentos de felicidad y bienestar para tus mascotas. </center>
+		<p>Juntos creamos momentos de felicidad y bienestar para tus mascotas. </p>
 	</h2>
 	<br>
 

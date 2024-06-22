@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
   $email = $_POST['correo'];
   $password = $_POST['password'];
 
-  // Evitar inyección SQL
+  // Evitar inyección SQL (Seguridad)
   $email = $conn->real_escape_string($email);
 
   // Consulta para verificar las credenciales del usuario
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
       // Contraseña correcta, iniciar sesión
       $_SESSION['usuario_id'] = $row['ID_Cliente'];
       $_SESSION['nombre'] = $row['nombre'];
-      header("Location: perfil.php"); // Redirigir a la página de perfil
+      header("Location: perfil.php"); // Redirigir a la página de perfil si coinciden las credenciales
       exit;
     } else {
       // Contraseña incorrecta
@@ -53,8 +53,6 @@ if (isset($_POST['submit'])) {
   <title>HAKUNA MATATA PETS</title>
   <link rel="stylesheet" href="CSS/style_ingreso.css">
   <link rel="stylesheet" href="CSS/style_base.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -62,7 +60,7 @@ if (isset($_POST['submit'])) {
   <?php include 'template/header.php'?>
   <!-- De acá hacia arriba NO TOCAR -->
 
-  <?php if (!empty($resultado)) { ?>
+  <?php if (!empty($resultado)) { ?>      <!-- Mostrar mensaje cuando haya resultado-->
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-12">

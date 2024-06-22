@@ -1,4 +1,5 @@
 <style>
+    /* estilos para hacer responsive la pagina */
     .nav-item a {
       display: block;
       padding: 10px 20px;
@@ -26,6 +27,7 @@
       display: none;
     }
 
+    /* estilos para responsive en dispositivos moviles */
     @media (max-width: 992px) {
       .menu-toggle {
         display: block;
@@ -65,7 +67,8 @@
 					<a class="nav-link" href="servicios.php"><strong>SERVICIOS</strong></a>
 				  </li>
 				  </li>
-          <?php if (!isset($_SESSION['usuario_id'])) { ?>
+
+          <?php if (!isset($_SESSION['usuario_id'])) { ?>    <!--verifica si el usuario ha iniciado sessión-->
 				  <li class="nav-item">
 					<a class="nav-link" href="registro.php"><strong>REGISTRO</strong></a>
 				  </li>

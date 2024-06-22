@@ -71,7 +71,7 @@ if ($error) {
                                 <td><?php echo escapar($fila["email"]); ?></td>
                                 <td><?php echo escapar($fila["direccion"]); ?></td>
                                 <td>
-                                    <a href="<?= 'borrar.php?id=' . escapar($fila["ID_Cliente"]) ?>">🗑️Borrar</a>
+                                    <a href="<?= 'borrar.php?id=' . escapar($fila["ID_Cliente"]) ?>"><i class="material-icons" style="font-size: 14px;">error_outline</i>Deshabilitar</a>
                                     <a href="<?= 'editar.php?id=' . escapar($fila["ID_Cliente"]) ?>" .>✏️Editar</a>
                                 </td>
                             </tr>
