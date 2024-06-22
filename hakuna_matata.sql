@@ -45,12 +45,13 @@ ID_Mascota INT,
 fecha DATE,
 hora TIME,
 ID_Servicio INT,
+ID_Empleados INT,
 creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 actualizado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY(ID_Cliente) REFERENCES Cliente(ID_Cliente),
 FOREIGN KEY(ID_Mascota) REFERENCES Mascota(ID_Mascota),
-FOREIGN KEY(ID_Servicio) REFERENCES Servicios(ID_Servicios)
+FOREIGN KEY(ID_Servicio) REFERENCES Servicios(ID_Servicios),
+FOREIGN KEY(ID_Empleados) REFERENCES Empleados(ID_Empleados)
 );
-
 
 DROP DATABASE hakuna_matata;
