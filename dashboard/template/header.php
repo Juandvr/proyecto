@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" type="image/x-icon" href="../IMAGENES/dashboardicon.png">
 </head>
 <body>
     <div class="container">

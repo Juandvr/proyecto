@@ -96,9 +96,6 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="CSS/style_registro.css" />
     <link rel="stylesheet" href="CSS/style_base.css" />
     <link rel="stylesheet" href="CSS/estilo_board.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-</head>
 
     <?php include 'template/header.php'?>
     <!-- De acá hacia arriba NO TOCAR -->
@@ -126,7 +123,7 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="direccion" placeholder="Digita tu direccion" class="form-control" /><br />
                     <input type="password" name="contraseña" placeholder="Digita tu contraseña" class="form-control" /><br />
                     <input type="checkbox" name="terminos">
-                    <label for="terminos" style="color:white;">Autorizo el <a href="#" id="link">tratamiento de mis datos personales</a></label> <br /><br />
+                    <label for="terminos" style="color:white;">Autorizo el <a href="#" id="link" style="color: blue;">tratamiento de mis datos personales</a></label> <br /><br />
                     <input type="submit" name="submit" value="REGISTRARSE" class="btn btn-danger" />
                 </form>
                 <br />
