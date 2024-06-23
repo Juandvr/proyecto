@@ -1,5 +1,5 @@
 let form = document.getElementById('modal');
-let span = getElementById('link');
+let span = document.getElementById('link');
 let cerrar = document.getElementsByClassName('cerrar')[0];
 
     span.addEventListener('click', (e) => {

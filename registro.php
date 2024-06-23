@@ -136,10 +136,10 @@ if (isset($_POST['submit'])) {
     <div id="modal" class="modalf">
       <div class="modalf-content">
         <span class="cerrar">&times;</span>
-        <p>Prueba de modal</p>
+        <img src="IMAGENES/autorizaciondatos.jpg" alt="autorizacion" class="img-fluid">
       </div>
     </div>
-    <script src="./scripts/datos.js"></script>
+    <script src="scripts/datos.js"></script>
     <!--div container -->
     <br />
     <!-- De acá hacia abajo NO TOCAR -->
