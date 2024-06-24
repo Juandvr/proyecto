@@ -9,6 +9,9 @@ try {
     $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
     $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
     $id = $_GET['id'];
+    $consultaSQLcitas = "DELETE FROM citas WHERE ID_Mascota =" . $id;
+    $sentenciaCitas = $conexion->prepare($consultaSQLcitas);
+    $sentenciaCitas->execute();
     $consultaSQL = "DELETE FROM mascota WHERE ID_Mascota =" . $id;
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
